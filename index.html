@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I miei valori</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #47d6b7b0;
+            color: white;
+            padding: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+ /* Stile per la nuova tabella sopra */
+ .fixed-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+
+        .fixed-table td {
+            border: 1px solid #ddd;
+            text-align: center;
+            background-color: #d7f8f3; /* Colore di sfondo per distinguere */
+            height: 20px; /* Altezza fissa */
+            width: 25%; /* Larghezza uguale alla vecchia tabella */
+            box-sizing: border-box;
+        }
+
+        /* Tabella 4x1 con celle uniformi */
+        .my-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        .my-table td {
+            border: 1px solid #ddd;
+            text-align: center;
+            background-color: #ffffff;
+            vertical-align: middle;
+            padding: 10px;
+            width: 25%; /* Larghezza uniforme per ogni cella */
+            height: 150px; /* Altezza fissa per ogni cella */
+            box-sizing: border-box; /* Include il padding nel calcolo della larghezza */
+            overflow: auto; /* Impedisce che le immagini escono fuori dalla cella */
+        }
+
+        .image-container {
+    display: flex;
+    flex-wrap: wrap; /* Le immagini vanno a capo automaticamente */
+    justify-content: flex-start; /* Allinea le immagini all'inizio della riga */
+    align-items: flex-start; /* Allinea le immagini in alto nella riga */
+    gap: 20px; /* Maggiore spazio tra le immagini */
+    box-sizing: border-box; /* Include il padding nel calcolo della larghezza */
+    overflow: auto; /* Impedisce che le immagini escono fuori dalla cella */
+}
+
+.image-container img {
+    width: calc(25% - 20px); /* Le immagini sono ridotte al 25% della larghezza originale, ma sottraendo il gap */
+    height: auto;
+    margin-bottom: 20px; /* Maggiore spazio tra le immagini verticalmente */
+    transition: all 0.3s ease; /* Aggiungi una transizione per un effetto più fluido */
+    cursor: grab; /* Cambia il cursore quando l'immagine è selezionata */
+}
+
+
+       /* Carosello verticale centrato */
+       .carousel-container {
+            width: 40%;
+            margin: 20px auto; /* Centra il carosello */
+            height: auto;
+            overflow-y: scroll; /* Scorrimento verticale */
+            text-align: center;
+            position: relative; /* Necessario per il corretto posizionamento delle immagini */
+            z-index: 1; /* Per mantenere il contenitore sopra altri elementi */
+
+        .carousel-image {
+            width: 40%; /* Le immagini del carosello sono ridotte al 40% della loro larghezza originale */
+            height: auto;
+            margin-bottom: 10px; /* Distanza tra le immagini */
+            position: relative; /* Necessario per il corretto posizionamento delle immagini */
+            z-index: 1; /* Per mantenere il contenitore sopra altri elementi */
+        }
+
+        .carousel-controls {
+            margin-top: 10px;
+        }
+
+        .carousel-controls button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .carousel-controls button:hover {
+            background-color: #0056b3;
+        }
+
+        .carousel-controls button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Quanto è importante per te</h1>
+    </header>
+
+<!-- Nuova tabella sopra -->
+<table class="fixed-table">
+    <tr>
+        <td><b>Molto importante</b></td>
+        <td><b>Abbastanza importante</b></td>
+        <td><b>Poco importante</b></td>
+        <td><b>Top 5</b></td>
+    </tr>
+</table>
+
+    <!-- Tabella 4x1 con celle uniformi -->
+    <table class="my-table">
+        <tr>
+            <td id="col1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="image-container" id="container1">
+                    <!-- Le immagini verranno inserite qui -->
+                </div>
+            </td>
+            <td id="col2" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="image-container" id="container2">
+                    <!-- Le immagini verranno inserite qui -->
+                </div>
+            </td>
+            <td id="col3" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="image-container" id="container3">
+                    <!-- Le immagini verranno inserite qui -->
+                </div>
+            </td>
+            <td id="col4" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="image-container" id="container4">
+                    <!-- Le immagini verranno inserite qui -->
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="carousel-container">
+        <!-- Carosello con scorrimento verticale delle immagini -->
+        <img src="https://imgur.com/kw4Gaq" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/ZdCrIWe" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/89OZ5KC" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/PrLVHUc" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/6UlBKbW" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/lk8iqf6" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/oh7PVJE" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/lTsF69B" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/V6MzWMw" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/W8AyT3Y" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/iU5Z6Hj" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/IHUYREM" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/uuIS4MP" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/U8kG5h7" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/TI1hYZn" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/gAh1V7w" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/yiEqgCF" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/xxIEHrr" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/b27ZyX1" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/gdax0TN" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/PNcZpSv" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/ucl7ZNg" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/Bgwwdta" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/IoDRPlK" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/Ca4f4f0" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/mN1ibtc" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/OzUe0Oa" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/0Oy7PK0" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/stFW945" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/tEpe4QY" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/tI93d4b" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/RZIsyGa" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/MjL3uEc" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/U05CX9f" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/49NZvck" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+        <img src="https://imgur.com/jKvWmFS" class="carousel-image active" draggable="true" ondragstart="drag(event)">
+    </div>
+
+    <script>
+function allowDrop(event) {
+    event.preventDefault();  // Impedisce il comportamento di default (che non permette il drop)
+}
+
+function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);  // Salva l'ID dell'immagine trascinata
+}
+
+function drop(event) {
+    event.preventDefault();  // Impedisce il comportamento di default
+
+    const data = event.dataTransfer.getData("text");
+    const draggedImage = document.getElementById(data);
+
+    // Ottieni le dimensioni originali dell'immagine
+    const originalWidth = draggedImage.naturalWidth;
+    const originalHeight = draggedImage.naturalHeight;
+
+    // Ridimensiona l'immagine al 20% delle sue dimensioni originali
+    draggedImage.style.width = `${originalWidth * 0.2}px`;
+    draggedImage.style.height = "auto";  // Mantiene le proporzioni originali
+
+    // Aggiungi un margine tra le immagini
+    draggedImage.style.margin = "5px";  
+
+    // Ottieni la cella dove l'immagine verrà inserita
+    const cell = event.target;
+
+    // Verifica se la cella ha già un contenitore di immagini
+    let imageRow = cell.querySelector(".image-row");
+
+    // Se non c'è un contenitore di immagini, creane uno
+    if (!imageRow) {
+        imageRow = document.createElement("div");
+        imageRow.classList.add("image-row");
+        imageRow.style.display = "flex";
+        imageRow.style.flexWrap = "wrap";  // Le immagini si dispongono orizzontalmente
+        imageRow.style.justifyContent = "flex-start";
+        imageRow.style.gap = "5px";
+        cell.appendChild(imageRow);
+    }
+
+    // Ottieni tutte le immagini della riga corrente
+    const imagesInRow = imageRow.querySelectorAll("img");
+
+    // Se ci sono già 4 immagini, crea una nuova riga
+    if (imagesInRow.length >= 4) {
+        // Crea una nuova riga per aggiungere ulteriori immagini
+        imageRow = document.createElement("div");
+        imageRow.classList.add("image-row");
+        imageRow.style.display = "flex";
+        imageRow.style.flexWrap = "wrap";  // Le immagini si dispongono orizzontalmente
+        imageRow.style.justifyContent = "flex-start";
+        imageRow.style.gap = "5px";
+        cell.appendChild(imageRow);
+    }
+
+    // Cerca la prima posizione vuota nella riga e inserisci l'immagine lì
+    for (let i = 0; i < imagesInRow.length; i++) {
+        // Se l'immagine corrente non è visibile (ha una larghezza di 0), possiamo inserirla lì
+        if (imagesInRow[i].style.width === "" || imagesInRow[i].style.width === "0px") {
+            imageRow.insertBefore(draggedImage, imagesInRow[i]);
+            return;
+        }
+    }
+
+    // Se non ci sono posizioni vuote, aggiungi l'immagine alla fine della riga
+    imageRow.appendChild(draggedImage);
+}
+    </script>
+</body>
+</html>
